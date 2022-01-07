@@ -104,4 +104,5 @@ void	*free_2d(char **tab);
 void    draw_assets(t_game *game);
 int		check_assets(t_game *game);
 int		check_map_ones(t_game *game);
+int		check_starting_position(t_game *game);
 #endif

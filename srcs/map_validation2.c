@@ -6,7 +6,7 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:34:38 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/07 18:50:50 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/07 19:00:25 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int check_valid_map(t_game *game)
             if (check_map_line_length(game))
                 if (check_assets(game))
                     if (check_map_ones(game))
-                        return (TRUE);
+                        if (check_map_starting_position(game))
+                            return (TRUE);
     return (FALSE);
 }
 
