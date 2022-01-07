@@ -6,19 +6,43 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:40:22 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/07 16:30:05 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:36:47 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+
+void    draw_assets(t_game *game)
+{
+       int  x;
+       int  y;
+
+       x = 0;
+       while (x < game->map_width)
+       {
+                y = 0;
+                while (y < game->map_height)
+                {
+                         if (game->map[y][x] == '1')
+                                img_draw(game, game->img_space, x, y);
+                         else if (game->map[y][x] == 'E')
+                                img_draw(game, game->img_exit, x, y);
+                         else if (game->map[y][x] == 'P')
+                                img_draw(game, game->img_player, x, y);
+                         else if (game->map[y][x] == 'C')
+                                img_draw(game, game->img_collect, x, y);
+                         y++;
+                }
+                x++;
+       }
+}
 
 void    game_init(t_game *game)
 {
     game->mlx = mlx_init();
     game->win = mlx_new_window(game->mlx, game->map_width * 32, game->map_height * 32, "Filler");
     img_init(game);
-    for (int i = 0; i < 13; i++)
-        img_draw(game, game->img_player, i, 0);
+    draw_assets(game);
     mlx_loop(game->mlx);
 }
 

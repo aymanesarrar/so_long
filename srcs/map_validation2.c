@@ -6,7 +6,7 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:34:38 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/07 13:08:10 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:50:50 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ int check_valid_map(t_game *game)
     if (check_rectangle(game))
         if (check_map_valid_characters(game))
             if (check_map_line_length(game))
-                return (TRUE);
+                if (check_assets(game))
+                    if (check_map_ones(game))
+                        return (TRUE);
     return (FALSE);
 }
 
@@ -72,4 +74,24 @@ int check_map_line_length(t_game *game)
         index++;
     }
     return (TRUE);
+}
+
+int check_assets(t_game *game)
+{
+    int index;
+    int count;
+
+    index = 0;
+    count = 0;
+    while (game->map[index])
+    {
+        if (ft_strchr(game->map[index], 'C'))
+            count++;
+        if (ft_strchr(game->map[index], 'E'))
+            count++;
+        if (ft_strchr(game->map[index], 'P'))
+            count++;
+        index++;
+    }
+    return (count >= 3);
 }

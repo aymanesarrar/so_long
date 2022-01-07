@@ -101,4 +101,7 @@ void	img_init(t_game *game);
 void	*img_initialize(char *img, t_game *game);
 void	img_draw(t_game *game, void *img, int x, int y);
 void	*free_2d(char **tab);
+void    draw_assets(t_game *game);
+int		check_assets(t_game *game);
+int		check_map_ones(t_game *game);
 #endif
