@@ -42,7 +42,10 @@ SRCS = ft_atoi.c \
        map_validation.c \
        map_validation2.c \
        img_init.c \
-       utils.c
+       utils.c \
+       game.c \
+       endgame.c \
+       player_movement.c
 
 BONUS_SRCS = ft_lstadd_back.c \
 	   ft_lstadd_front.c \
@@ -93,7 +96,10 @@ OBJS = srcs/libft/ft_atoi.o \
        srcs/map_validation.o \
        srcs/map_validation2.o \
        srcs/img_init.o \
-       srcs/utils.o
+       srcs/utils.o \
+       srcs/game.o \
+       srcs/endgame.o \
+       srcs/player_movement.o
 
 RM = rm -rf
 

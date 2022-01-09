@@ -114,4 +114,12 @@ int		check_starting_position(t_game *game);
 void	get_player_position(t_game *game);
 void    draw_space(t_game *game);
 int		collectible_count(t_game *game);
+void    launch(char *filename);
+void	check_endgame(t_game *game);
+void	move_player_w(t_game *game);
+void	move_player_s(t_game *game);
+void	move_player_a(t_game *game);
+void	move_player_d(t_game *game);
+void	endgame(t_game *game);
+void	check_endgame(t_game *game);
 #endif
