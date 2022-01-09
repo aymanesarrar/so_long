@@ -6,7 +6,7 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 16:09:56 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/07 18:59:52 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/09 15:00:56 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,48 @@ int	check_starting_position(t_game *game)
 		index++;
 	}
 	return (count == 1);
+}
+
+void	get_player_position(t_game *game)
+{
+	int	index;
+	int jndex;
+
+	index = 0;
+	while (game->map[index])
+	{
+		jndex = 0;
+		while (game->map[index][jndex])
+		{
+			if (game->map[index][jndex] == 'P')
+			{
+				game->player_y = index;
+				game->player_x = jndex;
+			}
+			jndex++;
+		}
+		index++;
+	}
+}
+
+int	collectible_count(t_game *game)
+{
+	int	index;
+	int jndex;
+	int	count;
+
+	index = 0;
+	count = 0;
+	while (game->map[index])
+	{
+		jndex = 0;
+		while (game->map[index][jndex])
+		{
+			if (game->map[index][jndex] == 'C')
+				count++;
+			jndex++;
+		}
+		index++;
+	}
+	return (count);
 }

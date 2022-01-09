@@ -6,7 +6,7 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 14:39:35 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/07 17:39:29 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/08 15:50:34 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	img_init(t_game *game)
 	game->player_d = img_initialize("assets/player/PLAYER_D.xpm", game);
 	game->img_exit = img_initialize("assets/Door01.xpm", game);
 	game->img_player = img_initialize("assets/player/PLAYER.xpm", game);
-	game->img_collect = img_initialize("assets/food/baguette.xpm", game);
-	game->img_space = img_initialize("assets/brick.xpm", game);
+	game->img_collect = img_initialize("assets/food.xpm", game);
+	game->img_space = img_initialize("assets/space.xpm", game);
+	game->img_wall = img_initialize("assets/brick.xpm", game);
 }

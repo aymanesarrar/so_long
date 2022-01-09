@@ -20,6 +20,12 @@
 # define BUFFER_SIZE 1000
 # define TRUE 1
 # define FALSE 0
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_Q 12
+# define KEY_ESC 53
 
 typedef struct	s_game
 {
@@ -39,8 +45,8 @@ typedef struct	s_game
 	int		img_height;
 	int		win_width;
 	int		win_height;
-	int		player_direction;
 	int		player_x;
+	int		player_mouvement_counter;
 	int		player_y;
 	int		collected;
 	int		collectable;
@@ -105,4 +111,7 @@ void    draw_assets(t_game *game);
 int		check_assets(t_game *game);
 int		check_map_ones(t_game *game);
 int		check_starting_position(t_game *game);
+void	get_player_position(t_game *game);
+void    draw_space(t_game *game);
+int		collectible_count(t_game *game);
 #endif
