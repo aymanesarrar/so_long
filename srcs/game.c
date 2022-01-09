@@ -6,7 +6,7 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 15:09:06 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/09 18:31:58 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:40:28 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,8 @@ int press_key(int key, t_game *game)
     return 0;
 }
 
-int     red_cross(int keycode, t_game *game)
+int     red_cross(t_game *game)
 {
-    (void)keycode;
     game->endgame = 1;
     endgame(game);
     return (0);
@@ -89,8 +88,8 @@ void    game_init(t_game *game)
     draw_space(game);
     draw_assets(game);
     get_player_position(game);
-    mlx_hook(game->win, 2, 0, press_key, game);
-    mlx_hook(game->win, 17, 1L<<0, red_cross, game);
+    mlx_hook(game->win, 2, 0, &press_key, game);
+    mlx_hook(game->win, 17, 0, &red_cross, (void *)game);
     mlx_loop(game->mlx);
 }
 

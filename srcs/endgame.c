@@ -6,7 +6,7 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 15:13:16 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/09 18:32:56 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:40:45 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void	endgame(t_game *game)
 		free(game->img_wall);
 		free(game->img_player);
 		mlx_destroy_window(game->mlx, game->win);
-		exit(TRUE);
+		exit(1);
 	}
 }
