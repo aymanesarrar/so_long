@@ -6,12 +6,12 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:34:38 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/09 19:53:09 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:55:16 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-//testt
+//testtt
 char    **get_map(int fd)
 {
     char    *full_map;
