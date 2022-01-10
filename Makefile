@@ -3,6 +3,22 @@ NAME=libft.a
 CC=gcc
 CCFLAGS= -Wall -Wextra -Werror
 MAINSRC=srcs/main.c
+MAINBONUS=srcs/bonus/main_bonus.c
+GAMESRC = srcs/game.c \
+          srcs/endgame.c \
+          srcs/img_init.c \
+          srcs/map_validation.c \
+          srcs/map_validation2.c \
+          srcs/player_movement.c \
+          srcs/utils.c
+BONUS_GAMESRCS= srcs/bonus/game_bonus.c \
+                srcs/bonus/endgame_bonus.c \
+                srcs/bonus/img_init_bonus.c \
+                srcs/bonus/map_validation_bonus.c \
+                srcs/bonus/map_validation2_bonus.c \
+                srcs/bonus/player_movement_bonus.c \
+                srcs/bonus/utils_bonus.c
+                
 SRCS = ft_atoi.c \
        ft_bzero.c \
 	ft_calloc.c \
@@ -39,23 +55,6 @@ SRCS = ft_atoi.c \
        ft_striteri.c \
        get_next_line.c \
        get_next_line_utils.c \
-       map_validation.c \
-       map_validation2.c \
-       img_init.c \
-       utils.c \
-       game.c \
-       endgame.c \
-       player_movement.c
-
-BONUS_SRCS = ft_lstadd_back.c \
-	   ft_lstadd_front.c \
-	   ft_lstclear.c \
-	   ft_lstdelone.c \
-	   ft_lstiter.c \
-	   ft_lstlast.c \
-	   ft_lstmap.c \
-	   ft_lstnew.c \
-	   ft_lstsize.c \
 
 OBJS = srcs/libft/ft_atoi.o \
        srcs/libft/ft_bzero.o \
@@ -93,13 +92,6 @@ OBJS = srcs/libft/ft_atoi.o \
        srcs/libft/ft_striteri.o \
        srcs/libft/get_next_line.o \
        srcs/libft/get_next_line_utils.o \
-       srcs/map_validation.o \
-       srcs/map_validation2.o \
-       srcs/img_init.o \
-       srcs/utils.o \
-       srcs/game.o \
-       srcs/endgame.o \
-       srcs/player_movement.o
 
 RM = rm -rf
 
@@ -109,13 +101,13 @@ RM = rm -rf
 all:		${MAIN}
               
 $(MAIN):	${NAME}
-			${CC} -lmlx -framework OpenGL -framework AppKit $(MAINSRC) $(NAME) -o $(MAIN)
+			${CC} -lmlx -framework OpenGL -framework AppKit $(MAINSRC) $(NAME) ${GAMESRC} -o $(MAIN)
 
 $(NAME):	${OBJS}
 			ar rcs ${NAME} ${SRCS:.c=.o}
 
-bonus: 		${OBJS} ${BONUS_OBJS}
-			ar rcs ${NAME} ${OBJS} ${BONUS_OBJS}
+bonus: 		${NAME}
+			${CC} -lmlx -framework OpenGL -framework AppKit $(MAINBONUS) $(NAME) ${BONUS_GAMESRCS} -o $(MAIN)
 
 clean:
 			${RM} ${SRCS:.c=.o} ${BONUS_OBJS}

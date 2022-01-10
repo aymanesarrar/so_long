@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_movement.c                                  :+:      :+:    :+:   */
+/*   player_movement_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 17:54:14 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/10 15:57:35 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:55:54 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../includes/libft.h"
 
 void	increment_collected(t_game *game)
 {
+	char	*nb;
+	int		index;
+
+	index = 0;
 	if (game->map[game->player_y][game->player_x] == 'C')
 		game->collected++;
 	game->player_mouvement_counter++;
-	printf("%d\n", game->player_mouvement_counter);
+	while (game->map[0][index])
+	{
+		img_draw(game, game->img_wall, index, 0);
+		index++;
+	}
+	nb = ft_itoa(game->player_mouvement_counter);
+	mlx_string_put(game->mlx, game->win, 10, 10, 0xFFFFFF, nb);
+	free(nb);
 }
 
 void	move_player_w(t_game *game)
