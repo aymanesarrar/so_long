@@ -6,7 +6,7 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 16:09:56 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/09 15:00:56 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/10 11:11:05 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_map_ones(t_game *game)
 
 	index = 0;
 	jndex = 0;
-	while (index <  game->map_height)
+	while (index < game->map_height)
 	{
 		jndex = 0;
 		while (jndex < game->map_width)
@@ -53,7 +53,7 @@ int	check_map_ones(t_game *game)
 int	check_starting_position(t_game *game)
 {
 	int	index;
-	int jndex;
+	int	jndex;
 	int	count;
 
 	index = 0;
@@ -75,7 +75,7 @@ int	check_starting_position(t_game *game)
 void	get_player_position(t_game *game)
 {
 	int	index;
-	int jndex;
+	int	jndex;
 
 	index = 0;
 	while (game->map[index])
@@ -97,7 +97,7 @@ void	get_player_position(t_game *game)
 int	collectible_count(t_game *game)
 {
 	int	index;
-	int jndex;
+	int	jndex;
 	int	count;
 
 	index = 0;

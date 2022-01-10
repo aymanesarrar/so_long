@@ -6,43 +6,65 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 17:54:14 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/09 19:42:42 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/10 15:02:50 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
+void	increment_collected(t_game *game)
+{
+	game->player_mouvement_counter++;
+	printf("%d\n", game->player_mouvement_counter);
+	if (game->map[game->player_y][game->player_x] == 'C')
+		game->collected++;
+}
+
 void	move_player_w(t_game *game)
 {
 	if (game->map[game->player_y - 1][game->player_x] != '1')
-    {
-        img_draw(game, game->img_space, game->player_x, --game->player_y);
-        img_draw(game, game->player_w, game->player_x, game->player_y);
-        img_draw(game, game->img_space, game->player_x, game->player_y + 1);
-        game->player_mouvement_counter++;
-    	printf("%d\n", game->player_mouvement_counter);
-		if (game->map[game->player_y][game->player_x] == 'C')
-			game->collected++;
+	{
+		if (game->map[game->player_y][game->player_x] == 'E')
+			img_draw(game, game->img_exit, game->player_x, game->player_y);
+		else
+			img_draw(game, game->img_space, game->player_x, game->player_y);
+		game->player_y--;
+		img_draw(game, game->img_space, game->player_x, game->player_y);
+		img_draw(game, game->player_w, game->player_x, game->player_y);
+		increment_collected(game);
 		check_endgame(game);
-		if (game->map[game->player_y][game->player_x] == 'E' && game->endgame)
-			endgame(game);
-    }
+	}
+	if (game->map[game->player_y][game->player_x] == 'E' &&
+			game->endgame == TRUE)
+		endgame(game);
+	else if (game->map[game->player_y][game->player_x] == 'E')
+	{
+		img_draw(game, game->img_exit, game->player_x, game->player_y);
+		img_draw(game, game->player_w, game->player_x, game->player_y);
+	}
 }
 
 void	move_player_d(t_game *game)
 {
 	if (game->map[game->player_y][game->player_x + 1] != '1')
 	{
-		img_draw(game, game->img_space, ++game->player_x, game->player_y);
+		if (game->map[game->player_y][game->player_x] == 'E')
+			img_draw(game, game->img_exit, game->player_x, game->player_y);
+		else
+			img_draw(game, game->img_space, game->player_x, game->player_y);
+		game->player_x++;
+		img_draw(game, game->img_space, game->player_x, game->player_y);
 		img_draw(game, game->player_d, game->player_x, game->player_y);
-		img_draw(game, game->img_space, game->player_x - 1, game->player_y);
-		game->player_mouvement_counter++;
-		printf("%d\n", game->player_mouvement_counter);
-		if (game->map[game->player_y][game->player_x] == 'C')
-			game->collected++;
+		increment_collected(game);
 		check_endgame(game);
-		if (game->map[game->player_y][game->player_x] == 'E' && game->endgame)
-			endgame(game);
+	}
+	if (game->map[game->player_y][game->player_x] == 'E' &&
+			game->endgame == TRUE)
+		endgame(game);
+	else if (game->map[game->player_y][game->player_x] == 'E')
+	{
+		img_draw(game, game->img_exit, game->player_x, game->player_y);
+		img_draw(game, game->player_d, game->player_x, game->player_y);
 	}
 }
 
@@ -50,16 +72,23 @@ void	move_player_s(t_game *game)
 {
 	if (game->map[game->player_y + 1][game->player_x] != '1')
 	{
-		img_draw(game, game->img_space, game->player_x, ++game->player_y);
+		if (game->map[game->player_y][game->player_x] == 'E')
+			img_draw(game, game->img_exit, game->player_x, game->player_y);
+		else
+			img_draw(game, game->img_space, game->player_x, game->player_y);
+		game->player_y++;
+		img_draw(game, game->img_space, game->player_x, game->player_y);
 		img_draw(game, game->player_s, game->player_x, game->player_y);
-		img_draw(game, game->img_space, game->player_x, game->player_y - 1);
-		game->player_mouvement_counter++;
-		printf("%d\n", game->player_mouvement_counter);
-		if (game->map[game->player_y][game->player_x] == 'C')
-			game->collected++;
+		increment_collected(game);
 		check_endgame(game);
-		if (game->map[game->player_y][game->player_x] == 'E' && game->endgame)
-			endgame(game);
+	}
+	if (game->map[game->player_y][game->player_x] == 'E' &&
+			game->endgame == TRUE)
+		endgame(game);
+	else if (game->map[game->player_y][game->player_x] == 'E')
+	{
+		img_draw(game, game->img_exit, game->player_x, game->player_y);
+		img_draw(game, game->player_s, game->player_x, game->player_y);
 	}
 }
 
@@ -67,15 +96,22 @@ void	move_player_a(t_game *game)
 {
 	if (game->map[game->player_y][game->player_x - 1] != '1')
 	{
-		img_draw(game, game->img_space, --game->player_x, game->player_y);
+		if (game->map[game->player_y][game->player_x] == 'E')
+			img_draw(game, game->img_exit, game->player_x, game->player_y);
+		else
+			img_draw(game, game->img_space, game->player_x, game->player_y);
+		game->player_x--;
+		img_draw(game, game->img_space, game->player_x, game->player_y);
 		img_draw(game, game->player_a, game->player_x, game->player_y);
-		img_draw(game, game->img_space, game->player_x + 1, game->player_y);
-		game->player_mouvement_counter++;
-		printf("%d\n", game->player_mouvement_counter);
-		if (game->map[game->player_y][game->player_x] == 'C')
-			game->collected++;
+		increment_collected(game);
 		check_endgame(game);
-		if (game->map[game->player_y][game->player_x] == 'E' && game->endgame)
-			endgame(game);
+	}
+	if (game->map[game->player_y][game->player_x] == 'E' &&
+			game->endgame == TRUE)
+		endgame(game);
+	else if (game->map[game->player_y][game->player_x] == 'E')
+	{
+		img_draw(game, game->img_exit, game->player_x, game->player_y);
+		img_draw(game, game->player_a, game->player_x, game->player_y);
 	}
 }

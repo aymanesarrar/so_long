@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ../../includes/libft.h                                            :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aysarrar <aysarrar@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 18:37:02 by aysarrar          #+#    #+#             */
-/*   Updated: 2021/11/02 11:01:59 by aysarrar         ###   ########.fr       */
+/*   Created: 2022/01/10 11:58:29 by aysarrar          #+#    #+#             */
+/*   Updated: 2022/01/10 12:09:35 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define KEY_Q 12
 # define KEY_ESC 53
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
@@ -94,27 +94,27 @@ char	*gnl(ssize_t readr, char **str_input);
 char	*get_next_line(int fd);
 int		check_valid_map(t_game *game);
 int		check_rectangle(t_game *game);
-char    **get_map(int fd);
-int     check_extension(char *str);
-int     check_map_valid_characters(t_game *game);
-int     check_line_possible_characters(char *str);
-int     check_possible_character(char c);
-void    handle_errors();
-void    initialize_struct(t_game *game);
-void    game_init(t_game *game);
+char	**get_map(int fd);
+int		check_extension(char *str);
+int		check_map_valid_characters(t_game *game);
+int		check_line_possible_characters(char *str);
+int		check_possible_character(char c);
+void	handle_errors(void);
+void	initialize_struct(t_game *game);
+void	game_init(t_game *game);
 int		check_map_line_length(t_game *game);
 void	img_init(t_game *game);
 void	*img_initialize(char *img, t_game *game);
 void	img_draw(t_game *game, void *img, int x, int y);
 void	*free_2d(char **tab);
-void    draw_assets(t_game *game);
+void	draw_assets(t_game *game);
 int		check_assets(t_game *game);
 int		check_map_ones(t_game *game);
 int		check_starting_position(t_game *game);
 void	get_player_position(t_game *game);
-void    draw_space(t_game *game);
+void	draw_space(t_game *game);
 int		collectible_count(t_game *game);
-void    launch(char *filename);
+void	launch(char *filename);
 void	check_endgame(t_game *game);
 void	move_player_w(t_game *game);
 void	move_player_s(t_game *game);
@@ -122,4 +122,5 @@ void	move_player_a(t_game *game);
 void	move_player_d(t_game *game);
 void	endgame(t_game *game);
 void	check_endgame(t_game *game);
+void	increment_collected(t_game *game);
 #endif

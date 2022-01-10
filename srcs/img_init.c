@@ -6,7 +6,7 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 14:39:35 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/08 15:50:34 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/10 11:10:14 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ void	*img_initialize(char *img, t_game *game)
 {
 	void	*img_ptr;
 
-	img_ptr = mlx_xpm_file_to_image(game->mlx, img, &(game->img_width), &(game->img_height));
+	img_ptr = mlx_xpm_file_to_image(game->mlx,
+			img, &(game->img_width), &(game->img_height));
 	if (!img_ptr)
-		handle_errors();		
+		handle_errors();
 	return (img_ptr);
 }
 
-void img_draw(t_game *game, void *img, int x, int y)
+void	img_draw(t_game *game, void *img, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx, game->win, img, x * 32, y * 32);	
+	mlx_put_image_to_window(game->mlx, game->win, img, x * 32, y * 32);
 }
 
 void	img_init(t_game *game)
