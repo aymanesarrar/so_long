@@ -6,7 +6,7 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:40:22 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/10 11:18:29 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/10 18:05:27 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	launch(char *filename)
 	{
 		fd = open(filename, O_RDONLY);
 		game.map = get_map(fd);
+		if (!game.map)
+			handle_errors();
 		if (check_valid_map(&game))
 			game_init(&game);
 		else

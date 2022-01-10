@@ -6,7 +6,7 @@
 /*   By: aysarrar <aysarrar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 17:54:14 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/10 15:57:35 by aysarrar         ###   ########.fr       */
+/*   Updated: 2022/01/10 17:58:30 by aysarrar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	increment_collected(t_game *game)
 {
 	if (game->map[game->player_y][game->player_x] == 'C')
+	{
+		game->map[game->player_y][game->player_x] = '0';
 		game->collected++;
+	}
 	game->player_mouvement_counter++;
 	printf("%d\n", game->player_mouvement_counter);
 }
